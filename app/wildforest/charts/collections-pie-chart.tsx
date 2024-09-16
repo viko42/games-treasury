@@ -12,7 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import {
-  ChartConfig,
+  // ChartConfig,
   ChartContainer,
   ChartStyle,
   ChartTooltip,

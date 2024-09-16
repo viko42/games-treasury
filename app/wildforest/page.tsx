@@ -136,7 +136,7 @@ export default function WildForest() {
                 </p>
                 <ul className="list-disc list-inside mt-2 text-gray-300">
                   <li>Lords: Powerful characters that lead armies and control territories.</li>
-                  <li>Units: Various troops and creatures that make up the player's forces.</li>
+                  <li>Units: Various troops and creatures that make up the player&apos;s forces.</li>
                   <li>Skins: Cosmetic items that change the appearance of characters or units.</li>
                   <li>Packs: Bundles containing a mix of items, potentially including Lords, Units, and Skins.</li>
                 </ul>

@@ -137,7 +137,7 @@ export default function WildForest() {
                 </p>
                 <ul className="list-disc list-inside mt-2 text-gray-300">
                   <li>Items: Game materials, equipment, and consumables.</li>
-                  <li>Watcher's rings: Limited NFTs granting benefits to early supporters.</li>
+                  <li>Watcher&apos;s rings: Limited NFTs granting benefits to early supporters.</li>
                   <li>Real Estate: Unique land plots with resources, used for various in-game activities.</li>
                 </ul>
               </div>
