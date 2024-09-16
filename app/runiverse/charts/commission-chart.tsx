@@ -29,22 +29,10 @@ import { StatsType } from "../apis"
 export const description = ""
 
 const chartConfig = {
-  wildforest: {
-    label: "Wildforest",
-    color: "hsl(var(--chart-1))",
+  runiverse: {
+    label: "Runiverse",
+    color: "hsl(var(--chart-3))",
   },
-  // kaidro: {
-  //   label: "Kaidro",
-  //   color: "hsl(var(--chart-2))",
-  // },
-  // runiverse: {
-  //   label: "Runiverse",
-  //   color: "hsl(var(--chart-3))",
-  // },
-  // pixels: {
-  //   label: "Pixels",
-  //   color: "hsl(var(--chart-4))",
-  // },
 } satisfies ChartConfig
 
 export default function Component(props: { stats: StatsType }) {
@@ -108,30 +96,6 @@ export default function Component(props: { stats: StatsType }) {
             margin={{ top: 10, right: 30, left: 0, bottom: 30 }} // Added bottom margin
           >
             <defs>
-              <linearGradient id="fillwildforest" x1="0" y1="0" x2="0" y2="1">
-                <stop
-                  offset="5%"
-                  stopColor="var(--color-wildforest)"
-                  stopOpacity={0.8}
-                />
-                <stop
-                  offset="95%"
-                  stopColor="var(--color-wildforest)"
-                  stopOpacity={0.1}
-                />
-              </linearGradient>
-              {/* <linearGradient id="fillkaidro" x1="0" y1="0" x2="0" y2="1">
-                <stop
-                  offset="5%"
-                  stopColor="var(--color-kaidro)"
-                  stopOpacity={0.8}
-                />
-                <stop
-                  offset="95%"
-                  stopColor="var(--color-kaidro)"
-                  stopOpacity={0.1}
-                />
-              </linearGradient>
               <linearGradient id="fillruniverse" x1="0" y1="0" x2="0" y2="1">
                 <stop
                   offset="5%"
@@ -144,18 +108,6 @@ export default function Component(props: { stats: StatsType }) {
                   stopOpacity={0.1}
                 />
               </linearGradient>
-              <linearGradient id="fillpixels" x1="0" y1="0" x2="0" y2="1">
-                <stop
-                  offset="5%"
-                  stopColor="var(--color-pixels)"
-                  stopOpacity={0.8}
-                />
-                <stop
-                  offset="95%"
-                  stopColor="var(--color-pixels)"
-                  stopOpacity={0.1}
-                />
-              </linearGradient> */}
             </defs>
             <CartesianGrid vertical={false} stroke="rgba(255,255,255,0.1)" />
             <XAxis
@@ -185,40 +137,17 @@ export default function Component(props: { stats: StatsType }) {
                       day: "numeric",
                     })
                   }}
-                  
                   indicator="dot"
-                  // valueFormatter={(value) => `$${value}`}
                 />
               }
             />
-            {/* <Area
-              dataKey="kaidro"
-              type="natural"
-              fill="url(#fillkaidro)"
-              stroke="var(--color-kaidro)"
-              stackId="a"
-            /> */}
             <Area
-              dataKey="wildforest"
-              type="natural"
-              fill="url(#fillwildforest)"
-              stroke="var(--color-wildforest)"
-              stackId="a"
-            />
-            {/* <Area
               dataKey="runiverse"
               type="natural"
               fill="url(#fillruniverse)"
               stroke="var(--color-runiverse)"
               stackId="a"
             />
-            <Area
-              dataKey="pixels"
-              type="natural"
-              fill="url(#fillpixels)"
-              stroke="var(--color-pixels)"
-              stackId="a"
-            /> */}
             {!isMobile && props.stats.events.map((event, index) => (
               <ReferenceLine
                 key={index}

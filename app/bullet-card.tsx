@@ -4,12 +4,13 @@ import { IoTrendingUpSharp, IoTrendingDownSharp } from "react-icons/io5";
 
 interface BulletCardProps {
   title: string;
-  amount: number;
+  amount?: number;
   icon: IconType;
   iconColor?: string;
   percentageChange?: number;
   prefix?: string;
   suffix?: string;
+  text?: string;
 }
 
 const BulletCard: React.FC<BulletCardProps> = ({
@@ -20,6 +21,7 @@ const BulletCard: React.FC<BulletCardProps> = ({
   percentageChange,
   prefix = "",
   suffix = "",
+  text = "",
 }) => {
   return (
     <div 
@@ -64,10 +66,11 @@ const BulletCard: React.FC<BulletCardProps> = ({
 
         <div className="text-5xl font-bold text-white">
           {prefix}
-          {amount.toLocaleString(undefined, {
+          {amount ? amount.toLocaleString(undefined, {
             minimumFractionDigits: 0,
             maximumFractionDigits: 2,
-          })}
+          }) : ''}
+          {text ? text : ''}
           {suffix}
         </div>
       </div>

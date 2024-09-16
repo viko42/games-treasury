@@ -15,35 +15,36 @@ import { useEffect, useState } from "react";
 
 export default function WildForest() {
   const [stats, setStats] = useState(defaultStats);
-
   useEffect(() => {
-    // axios.get("http://localhost:3000/api/wildforest")
+    setStats(mockResponseApi);
+    // axios.get("http://localhost:3000/api/runiverse")
     //   .then((response) => {
     //     setStats(response.data);
     //   })
     //   .catch(err => {
     //     setStats(mockResponseApi);
     //   });
-    setStats(mockResponseApi)
   }, []);
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Banner Image */}
       <div className="relative h-48 md:h-60 lg:h-72">
-        <Image
-          src="https://cdn.skymavis.com/ronin/2020/erc721/0xa038c593115f6fcd673f6833e15462b475994879/banner.png" // Replace with your actual banner image path
-          alt="Wild Forest Banner"
-          layout="fill"
-          objectFit="cover"
+        <video
+          src="/videos/bg-homepage.webm"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900"></div>
         <Image
-          src="/images/logo.png"
+          src="/images/runiverse-logo.png"
           alt="Middle Image"
           width={300}
           height={300}
-          className="absolute top-[-15px] sm:top-[45px] md:top-[30px] lg:top-[45px] left-1/2 transform -translate-x-1/2"
+          className="absolute top-[10px] sm:top-[45px] md:top-[30px] lg:top-[100px] left-1/2 transform -translate-x-1/2"
         />
       </div>      
 
@@ -132,13 +133,12 @@ export default function WildForest() {
                 Commission Distribution
                 </h3>
                 <p className="text-gray-300">
-                  This pie chart illustrates the distribution of commissions across different collection types in Wild Forest:
+                  This pie chart illustrates the distribution of commissions across different collection types in The Forgotten Runiverse:
                 </p>
                 <ul className="list-disc list-inside mt-2 text-gray-300">
-                  <li>Lords: Powerful characters that lead armies and control territories.</li>
-                  <li>Units: Various troops and creatures that make up the player's forces.</li>
-                  <li>Skins: Cosmetic items that change the appearance of characters or units.</li>
-                  <li>Packs: Bundles containing a mix of items, potentially including Lords, Units, and Skins.</li>
+                  <li>Items: Game materials, equipment, and consumables.</li>
+                  <li>Watcher's rings: Limited NFTs granting benefits to early supporters.</li>
+                  <li>Real Estate: Unique land plots with resources, used for various in-game activities.</li>
                 </ul>
               </div>
             </div>

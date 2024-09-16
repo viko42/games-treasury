@@ -53,17 +53,7 @@ export default function CollectionsPieChart(props: { stats: StatsType }) {
                 <ChartTooltipContent
                   hideLabel
                   suffix="%"
-                  // formatter={(value) => (
-                  //   <div>
-                  //     <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                  //     <span>{value}%</span>
-                  //   </div>
-                  // )}
                   className="bg-gray-800 text-white border-gray-700"
-                  // labelFormatter={(value, payload) => {
-                  //   console.log(value, payload);
-                  //   return '-'
-                  // }}
                 />
               }
             />
