@@ -24,8 +24,8 @@ export type StatsType = {
   commissionPercentage: number;
   createdSince: string;
   totalSales: number;
-  yesterdaysSales: number;
-  yesterdaysCommission: number;
+  todaysSales: number;
+  todaysCommission: number;
   events: Array<{
     date: string;
     name: string;
@@ -50,8 +50,8 @@ export const mockResponseApi: StatsType = {
   commissionPercentage: 5,
   createdSince: new Date().toISOString(),
   totalSales: 20,
-  yesterdaysSales: 10,
-  yesterdaysCommission: 30,
+  todaysSales: 10,
+  todaysCommission: 30,
   events: [
     {
       date: "2024-07-05",
@@ -730,12 +730,12 @@ export const mockResponseApi: StatsType = {
 };
 
 export const defaultStats: StatsType = {
-  treasury: 1,
-  commissionPercentage: 1,
+  treasury: 0,
+  commissionPercentage: 2,
   createdSince: new Date().toISOString(),
-  totalSales: 1,
-  yesterdaysSales: 1,
-  yesterdaysCommission: 1,
+  totalSales: 0,
+  todaysSales: 0,
+  todaysCommission: 0,
   events: [],
   pieChart: [
     { collection: "Skins", share: 25, fill: chartConfig.Skins.color },

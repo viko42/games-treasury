@@ -90,3 +90,24 @@ body {
     @apply bg-background text-foreground;
   }
 }
+.aura-effect {
+  box-shadow: 0 0 20px 10px rgba(0, 255, 0, 0.2), inset 0 0 20px 10px rgba(0, 255, 0, 0.1);
+  border: 1px solid rgba(0, 255, 0, 0.5);
+  border-radius: 0.625rem;
+  animation: pulseAura 0.8s ease-in-out infinite;
+}
+
+@keyframes pulseAura {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.99);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.2;
+    transform: scale(1.01);
+  }
+}

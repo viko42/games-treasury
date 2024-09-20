@@ -44,7 +44,7 @@ export default function WildForest() {
           alt="Middle Image"
           width={300}
           height={300}
-          className="absolute top-[10px] sm:top-[45px] md:top-[30px] lg:top-[100px] left-1/2 transform -translate-x-1/2"
+          className="absolute top-[10px] sm:top-[45px] md:top-[30px] lg:top-[100px] left-1/2 transform -translate-x-1/2 z-[1000]"
         />
       </div>      
 
