@@ -1,6 +1,6 @@
 "use client"
 import * as React from "react"
-import { Area, AreaChart, CartesianGrid, XAxis, ReferenceLine } from "recharts"
+import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
 import {
   Card,
   CardContent,
@@ -23,7 +23,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { cn } from "@/lib/utils"
-import { useMediaQuery } from "@/hooks/useMediaQuery";
+// import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { StatsType } from "../apis"
 
 export const description = ""
@@ -61,7 +61,7 @@ export default function Component(props: { chartData: StatsType['commissionChart
     now.setDate(now.getDate() - daysToSubtract)
     return date >= now
   })
-  const isMobile = useMediaQuery("(max-width: 640px)");
+  // const isMobile = useMediaQuery("(max-width: 640px)");
 
   return (
     <Card className="bg-gray-900 text-white border-2 border-[#1E2027] rounded-[0.625rem] shadow-none">

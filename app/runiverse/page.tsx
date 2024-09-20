@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image";
 import CommissionChart from "./charts/commission-chart";
-import CollectionsPieChart from "./charts/collections-pie-chart";
+// import CollectionsPieChart from "./charts/collections-pie-chart";
 import BulletCard from "../bullet-card";
 import {
   FaCalendar,
