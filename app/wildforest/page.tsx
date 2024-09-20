@@ -25,18 +25,12 @@ export default function WildForest() {
       .then((response) => {
         const { currentBlock, latestBlock } = response.data;
 
-        if (latestBlock) {
+        if (latestBlock && latestBlock - currentBlock > 100) {
           toast.update(toastId!, {
             render: `${latestBlock - currentBlock} blocks remaining`,
             type: "info",
             isLoading: true,
-            updateId: toastId,
-          });
-        } else {
-          toast.update(toastId!, {
-            render: `Currently syncing ${currentBlock} out of ${latestBlock || '?'}`,
-            type: "info",
-            isLoading: true,
+            autoClose: 5000,
             updateId: toastId,
           });
         }
