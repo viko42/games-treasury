@@ -51,7 +51,7 @@ export default function WildForest() {
   useEffect(() => {
     const id = toast.loading('Initializing sync...', {
       position: "bottom-right",
-      autoClose: false,
+      autoClose: 5000,
       closeOnClick: false,
       pauseOnHover: true,
       draggable: true,
