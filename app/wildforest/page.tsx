@@ -49,7 +49,7 @@ export default function WildForest() {
   }, [toastId]);
 
   useEffect(() => {
-    const id = toast.loading('Initializing sync', {
+    const id = toast.info('Initializing sync', {
       position: "bottom-right",
       autoClose: 5000,
       closeOnClick: true,
