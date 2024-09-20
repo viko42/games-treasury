@@ -28,7 +28,6 @@ const BulletCard: React.FC<BulletCardProps> = ({
   text = "",
   tooltip,
   auraEffect = false,
-  counterEffect = false,
 }) => {
   const [displayedAmount, setDisplayedAmount] = useState(amount);
   const [isAuraActive, setIsAuraActive] = useState(false);

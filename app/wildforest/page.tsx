@@ -9,15 +9,15 @@ import {
   FaPercentage,
   FaShoppingCart,
 } from "react-icons/fa";
-import { defaultStats, mockResponseApi } from "./apis";
+import { defaultStats } from "./apis";
 import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
-import { ToastContainer, toast, ToastContentProps } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function WildForest() {
   const [stats, setStats] = useState(defaultStats);
-  const [syncStatus, setSyncStatus] = useState<string | null>(null);
+  const [syncStatus] = useState<string | null>(null);
   const [toastId, setToastId] = useState<string | number | null>(null);
 
   const fetchSyncStatus = useCallback(() => {
@@ -215,7 +215,6 @@ export default function WildForest() {
                 iconColor="text-yellow-400"
                 prefix="$"
                 auraEffect={true}
-                counterEffect={true}
               />
             </div>
 
