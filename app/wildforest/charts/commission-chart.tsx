@@ -47,9 +47,9 @@ const chartConfig = {
   // },
 } satisfies ChartConfig
 
-export default function Component(props: { stats: StatsType }) {
-  const [timeRange, setTimeRange] = React.useState("90d")
-  const filteredData = props.stats.commissionChart.filter((item) => {
+export default function Component(props: { chartData: StatsType['commissionChart'] }) {
+  const [timeRange, setTimeRange] = React.useState("7d")
+  const filteredData = props.chartData.filter((item) => {
     const date = new Date(item.date)
     const now = new Date()
     let daysToSubtract = 90
@@ -68,7 +68,7 @@ export default function Component(props: { stats: StatsType }) {
       <CardHeader className="flex items-center gap-2 space-y-0 border-b border-gray-700 py-5 sm:flex-row">
         <div className="grid flex-1 gap-1 text-center sm:text-left">
           <CardDescription className="text-gray-300">
-            Showing total commissions every day for the last 3 months
+            Showing total commissions every day for the last 1 month
           </CardDescription>
         </div>
         <Select value={timeRange} onValueChange={setTimeRange}>
@@ -79,12 +79,12 @@ export default function Component(props: { stats: StatsType }) {
             <SelectValue placeholder="Last 3 months" />
           </SelectTrigger>
           <SelectContent className="rounded-xl bg-gray-800 text-white">
-            <SelectItem value="90d" className="rounded-lg">
+            {/* <SelectItem value="90d" className="rounded-lg">
               Last 3 months
-            </SelectItem>
-            <SelectItem value="30d" className="rounded-lg">
+            </SelectItem> */}
+            {/* <SelectItem value="30d" className="rounded-lg">
               Last 30 days
-            </SelectItem>
+            </SelectItem> */}
             <SelectItem value="7d" className="rounded-lg">
               Last 7 days
             </SelectItem>
@@ -219,7 +219,7 @@ export default function Component(props: { stats: StatsType }) {
               stroke="var(--color-pixels)"
               stackId="a"
             /> */}
-            {!isMobile && props.stats.events.map((event, index) => (
+            {/* {!isMobile && props.stats.events.map((event, index) => (
               <ReferenceLine
                 key={index}
                 x={event.date}
@@ -231,7 +231,7 @@ export default function Component(props: { stats: StatsType }) {
                   fontSize: 12,
                 }}
               />
-            ))}
+            ))} */}
             <ChartLegend content={<ChartLegendContent />} />
           </AreaChart>
         </ChartContainer>

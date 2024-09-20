@@ -125,7 +125,7 @@ export default function WildForest() {
           </div>
         </div>
         <CommissionChart stats={stats} />
-        <div className="flex flex-col space-y-8 my-10">
+        {/* <div className="flex flex-col space-y-8 my-10">
           <div className="flex flex-wrap -mx-2">
             <div className="w-full md:w-1/2 px-2 flex items-center">
               <div className="p-4">
@@ -148,7 +148,7 @@ export default function WildForest() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </main>
     </div>
   );

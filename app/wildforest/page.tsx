@@ -19,6 +19,7 @@ export default function WildForest() {
   const [stats, setStats] = useState(defaultStats);
   const [syncStatus] = useState<string | null>(null);
   const [toastId, setToastId] = useState<string | number | null>(null);
+  const [chartData, setChartData] = useState([]);
 
   const fetchSyncStatus = useCallback(() => {
     axios.get("https://api.lord-holders.xyz/public/ronin-games-block-sync")
@@ -123,6 +124,22 @@ export default function WildForest() {
     return () => clearInterval(intervalId); // Cleanup on component unmount
   }, []);
 
+  useEffect(() => {
+    const fetchChartData = async () => {
+      try {
+        const response = await axios.get("https://api.lord-holders.xyz/public/ronin-games-commissions-chart");
+        setChartData(response.data);
+      } catch (err) {
+        console.error("Error fetching chart data:", err);
+      }
+    };
+
+    fetchChartData();
+    const intervalId = setInterval(fetchChartData, 60000); // Fetch every minute
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <ToastContainer position="bottom-right" theme="dark" limit={1} />
@@ -149,12 +166,43 @@ export default function WildForest() {
           <div className="w-full px-2 mb-4 flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
             <div className="w-full sm:flex-1">
               <BulletCard
-                title="Treasury"
+                title="Monthly Commission"
                 amount={stats.treasury}
                 icon={FaDollarSign}
                 iconColor="text-yellow-400"
                 percentageChange={5.2}
                 prefix="$"
+              />
+            </div>
+            <div className="w-full sm:flex-1">
+              <BulletCard
+                title="Today&apos;s Commission"
+                amount={stats.todaysCommission}
+                icon={FaDollarSign}
+                iconColor="text-yellow-400"
+                prefix="$"
+                auraEffect={true}
+              />
+            </div>
+            <div className="w-full sm:flex-1">
+              <BulletCard
+                title="Today&apos;s Sales"
+                amount={stats.todaysSales}
+                icon={FaShoppingCart}
+                iconColor="text-yellow-400"
+              />
+            </div>
+            
+          </div>
+
+          <div className="w-full px-2 mb-4 flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+            <div className="w-full sm:flex-1">
+              <BulletCard
+                title="Monthly sales"
+                tooltip="Recording started on September 1st"
+                amount={stats.totalSales}
+                icon={FaShoppingCart}
+                iconColor="text-yellow-400"
               />
             </div>
             <div className="w-full sm:flex-1">
@@ -166,6 +214,7 @@ export default function WildForest() {
                 suffix="%"
               />
             </div>
+
             <div className="w-full sm:flex-1">
               <BulletCard
                 title="Created since"
@@ -190,40 +239,9 @@ export default function WildForest() {
               />
             </div>
           </div>
-
-          <div className="w-full px-2 mb-4 flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
-            <div className="w-full sm:flex-1">
-              <BulletCard
-                title="Total sales"
-                tooltip="Recording started on September 1st"
-                amount={stats.totalSales}
-                icon={FaShoppingCart}
-                iconColor="text-yellow-400"
-              />
-            </div>
-            <div className="w-full sm:flex-1">
-              <BulletCard
-                title="Today&apos;s Commission"
-                amount={stats.todaysCommission}
-                icon={FaDollarSign}
-                iconColor="text-yellow-400"
-                prefix="$"
-                auraEffect={true}
-              />
-            </div>
-
-            <div className="w-full sm:flex-1">
-              <BulletCard
-                title="Today&apos;s Sales"
-                amount={stats.todaysSales}
-                icon={FaShoppingCart}
-                iconColor="text-yellow-400"
-              />
-            </div>
-          </div>
         </div>
-        <CommissionChart stats={stats} />
-        <div className="flex flex-col space-y-8 my-10">
+        <CommissionChart chartData={chartData} />
+        {/* <div className="flex flex-col space-y-8 my-10">
           <div className="flex flex-wrap -mx-2">
             <div className="w-full md:w-1/2 px-2 flex items-center">
               <div className="p-4">
@@ -247,7 +265,7 @@ export default function WildForest() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </main>
     </div>
   );
