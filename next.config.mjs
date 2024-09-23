@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['cdn.skymavis.com'],
+    domains: ['cdn.skymavis.com', 'roninchain.com'],
   },
   // Ajout de la redirection de la page d'accueil vers /wildforest
   async redirects() {

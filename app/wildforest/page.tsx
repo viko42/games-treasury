@@ -14,6 +14,7 @@ import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import GamesListSliders from "../games-list-sliders";
 
 export default function WildForest() {
   const [stats, setStats] = useState(defaultStats);
@@ -241,31 +242,7 @@ export default function WildForest() {
           </div>
         </div>
         <CommissionChart chartData={chartData} />
-        {/* <div className="flex flex-col space-y-8 my-10">
-          <div className="flex flex-wrap -mx-2">
-            <div className="w-full md:w-1/2 px-2 flex items-center">
-              <div className="p-4">
-                <h3 className="text-2xl font-bold mb-4">
-                Commission Distribution
-                </h3>
-                <p className="text-gray-300">
-                  This pie chart illustrates the distribution of commissions across different collection types in Wild Forest:
-                </p>
-                <ul className="list-disc list-inside mt-2 text-gray-300">
-                  <li>Lords: Powerful characters that lead armies and control territories.</li>
-                  <li>Units: Various troops and creatures that make up the player&apos;s forces.</li>
-                  <li>Skins: Cosmetic items that change the appearance of characters or units.</li>
-                  <li>Packs: Bundles containing a mix of items, potentially including Lords, Units, and Skins.</li>
-                </ul>
-              </div>
-            </div>
-            <div className="w-full md:w-1/2 px-2">
-              <div className="h-[450px]">
-                <CollectionsPieChart stats={stats}/>
-              </div>
-            </div>
-          </div>
-        </div> */}
+        <GamesListSliders game="wildforest" />
       </main>
     </div>
   );
