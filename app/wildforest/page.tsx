@@ -244,8 +244,8 @@ export default function WildForest() {
         </div>
         <CommissionChart chartData={chartData} />
       </main>
+      <GamesListSliders game="wildforest" />
     </div>
-    <GamesListSliders game="wildforest" />
     </>
   );
 }
