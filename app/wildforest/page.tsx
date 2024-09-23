@@ -142,6 +142,7 @@ export default function WildForest() {
   }, []);
 
   return (
+    <>
     <div className="min-h-screen bg-gray-900 text-white">
       <ToastContainer position="bottom-right" theme="dark" limit={1} />
       {/* Banner Image */}
@@ -242,8 +243,9 @@ export default function WildForest() {
           </div>
         </div>
         <CommissionChart chartData={chartData} />
-        <GamesListSliders game="wildforest" />
       </main>
     </div>
+    <GamesListSliders game="wildforest" />
+    </>
   );
 }

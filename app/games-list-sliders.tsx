@@ -29,19 +29,20 @@ const games: Game[] = [
     slug: "kaidro",
   },
 
-  { 
-    title: 'Pixels', 
-    image: 'https://roninchain.com/static/images/games/pixels-bg.png', 
-    playNowLink: '',
-    logo: 'https://roninchain.com/static/images/games/pixels-logo.png',
-    slug: "pixels",
-  },
+ 
   { 
     title: 'Wild Forest', 
     image: 'https://roninchain.com/static/images/games/wild-forest-bg.png', 
     playNowLink: '/wildforest',
     logo: 'https://roninchain.com/static/images/games/wild-forest-logo.png',
     slug: "wildforest",
+  },
+  { 
+    title: 'Pixels', 
+    image: 'https://roninchain.com/static/images/games/pixels-bg.png', 
+    playNowLink: '',
+    logo: 'https://roninchain.com/static/images/games/pixels-logo.png',
+    slug: "pixels",
   },
   // Add more games here...
 ];
@@ -54,9 +55,12 @@ export default function GamesListSliders(props: { game: string }) {
         effect="coverflow"
         grabCursor={true}
         centeredSlides={true}
-        slidesPerView={3}
+        // navigation
+        // pagination={{ clickable: true }}
+        spaceBetween={50}
+        slidesPerView={'auto'}
         loop={true}
-        initialSlide={2}
+        initialSlide={0}
         coverflowEffect={{
           rotate: 0,
           stretch: 0,
