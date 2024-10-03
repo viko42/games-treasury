@@ -25,11 +25,13 @@ export default function WildForest() {
   const fetchSyncStatus = useCallback(() => {
     axios.get("https://api.lord-holders.xyz/public/ronin-games-block-sync")
       .then((response) => {
-        const { currentBlock, latestBlock } = response.data;
+        const { currentBlock, currentBlockTimestamp, latestBlock } = response.data;
 
         if (latestBlock && latestBlock - currentBlock > 100) {
+          const date = new Date(currentBlockTimestamp * 1000);
+          const formattedDate = date.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '/');
           toast.update(toastId!, {
-            render: `${latestBlock - currentBlock} blocks remaining`,
+            render: `${latestBlock - currentBlock} blocks remaining (${formattedDate})`,
             type: "info",
             isLoading: true,
             autoClose: 5000,
