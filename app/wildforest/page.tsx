@@ -1,7 +1,6 @@
 "use client"
 import Image from "next/image";
 import CommissionChart from "./charts/commission-chart";
-// import CollectionsPieChart from "./charts/collections-pie-chart";
 import BulletCard from "../bullet-card";
 import {
   FaCalendar,
@@ -21,6 +20,7 @@ export default function WildForest() {
   const [syncStatus] = useState<string | null>(null);
   const [toastId, setToastId] = useState<string | number | null>(null);
   const [chartData, setChartData] = useState([]);
+  const [chartPeriod, setChartPeriod] = useState('week');
 
   const fetchSyncStatus = useCallback(() => {
     axios.get("https://api.lord-holders.xyz/public/ronin-games-block-sync")
@@ -127,21 +127,25 @@ export default function WildForest() {
     return () => clearInterval(intervalId); // Cleanup on component unmount
   }, []);
 
-  useEffect(() => {
-    const fetchChartData = async () => {
-      try {
-        const response = await axios.get("https://api.lord-holders.xyz/public/ronin-games-commissions-chart");
-        setChartData(response.data);
-      } catch (err) {
-        console.error("Error fetching chart data:", err);
-      }
-    };
+  const fetchChartData = useCallback(async (period: string = 'week') => {
+    try {
+      const response = await axios.get(`https://api.lord-holders.xyz/public/ronin-games-commissions-chart?period=${period}`);
+      setChartData(response.data);
+    } catch (err) {
+      console.error("Error fetching chart data:", err);
+    }
+  }, []);
 
-    fetchChartData();
-    const intervalId = setInterval(fetchChartData, 60000); // Fetch every minute
+  useEffect(() => {
+    fetchChartData(chartPeriod);
+    const intervalId = setInterval(() => fetchChartData(chartPeriod), 60000); // Fetch every minute
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [chartPeriod, fetchChartData]);
+
+  const handlePeriodChange = (newPeriod: string) => {
+    setChartPeriod(newPeriod);
+  };
 
   return (
     <>
@@ -244,7 +248,7 @@ export default function WildForest() {
             </div>
           </div>
         </div>
-        <CommissionChart chartData={chartData} />
+        <CommissionChart chartData={chartData} period={chartPeriod} onPeriodChange={handlePeriodChange}/>
       </main>
       <GamesListSliders game="wildforest" />
     </div>

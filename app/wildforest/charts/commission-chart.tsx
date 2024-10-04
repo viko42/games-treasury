@@ -47,15 +47,15 @@ const chartConfig = {
   // },
 } satisfies ChartConfig
 
-export default function Component(props: { chartData: StatsType['commissionChart'] }) {
-  const [timeRange, setTimeRange] = React.useState("7d")
+export default function Component(props: { chartData: StatsType['commissionChart']; period: 'week' | 'month'; onPeriodChange: (period: 'week' | 'month') => void }) {
+  // const [timeRange, setTimeRange] = React.useState("7d")
   const filteredData = props.chartData.filter((item) => {
     const date = new Date(item.date)
     const now = new Date()
     let daysToSubtract = 90
-    if (timeRange === "30d") {
+    if (props.period === "month") {
       daysToSubtract = 30
-    } else if (timeRange === "7d") {
+    } else if (props.period === "week") {
       daysToSubtract = 7
     }
     now.setDate(now.getDate() - daysToSubtract)
@@ -71,7 +71,7 @@ export default function Component(props: { chartData: StatsType['commissionChart
             Showing total commissions every day
           </CardDescription>
         </div>
-        <Select value={timeRange} onValueChange={setTimeRange}>
+        <Select value={props.period} onValueChange={props.onPeriodChange}>
           <SelectTrigger
             className="w-[160px] rounded-lg sm:ml-auto bg-gray-800 text-white"
             aria-label="Select a value"
@@ -82,10 +82,10 @@ export default function Component(props: { chartData: StatsType['commissionChart
             {/* <SelectItem value="90d" className="rounded-lg">
               Last 3 months
             </SelectItem> */}
-            <SelectItem value="30d" className="rounded-lg">
+            <SelectItem value="month" className="rounded-lg">
               Last 30 days
             </SelectItem>
-            <SelectItem value="7d" className="rounded-lg">
+            <SelectItem value="week" className="rounded-lg">
               Last 7 days
             </SelectItem>
           </SelectContent>
