@@ -48,7 +48,6 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export default function Component(props: { chartData: StatsType['commissionChart']; period: 'week' | 'month'; onPeriodChange: (period: 'week' | 'month') => void }) {
-  // const [timeRange, setTimeRange] = React.useState("7d")
   const filteredData = props.chartData.filter((item) => {
     const date = new Date(item.date)
     const now = new Date()

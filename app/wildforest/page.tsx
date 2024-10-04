@@ -20,7 +20,7 @@ export default function WildForest() {
   const [syncStatus] = useState<string | null>(null);
   const [toastId, setToastId] = useState<string | number | null>(null);
   const [chartData, setChartData] = useState([]);
-  const [chartPeriod, setChartPeriod] = useState<'week' | 'month'>('week');
+  const [chartPeriod, setChartPeriod] = useState<'week' | 'month'>('month');
 
   const fetchSyncStatus = useCallback(() => {
     axios.get("https://api.lord-holders.xyz/public/ronin-games-block-sync")
@@ -127,7 +127,7 @@ export default function WildForest() {
     return () => clearInterval(intervalId); // Cleanup on component unmount
   }, []);
 
-  const fetchChartData = useCallback(async (period: string = 'week') => {
+  const fetchChartData = useCallback(async (period: string = 'month') => {
     try {
       const response = await axios.get(`https://api.lord-holders.xyz/public/ronin-games-commissions-chart?period=${period}`);
       setChartData(response.data);
