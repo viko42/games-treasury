@@ -180,8 +180,9 @@ export default function Component(props: { chartData: StatsType['commissionChart
                   suffix="$"
                   labelFormatter={(value) => {
                     return new Date(value).toLocaleDateString("en-US", {
-                      month: "short",
+                      weekday: "long",
                       day: "numeric",
+                      month: "short",
                     })
                   }}
                   
