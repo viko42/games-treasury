@@ -20,10 +20,11 @@ export const chartConfig = {
 } satisfies ChartConfig;
 
 export type StatsType = {
-  treasury: number;
+  // treasury: number;
   commissionPercentage: number;
   createdSince: string;
-  totalSales: number;
+  weeklyCommissions: number;
+  monthlyCommissions: number;
   todaysSales: number;
   todaysCommission: number;
   events: Array<{
@@ -46,10 +47,11 @@ export type StatsType = {
 };
 
 export const mockResponseApi: StatsType = {
-  treasury: 10000,
+  // treasury: 10000,
   commissionPercentage: 5,
   createdSince: new Date().toISOString(),
-  totalSales: 20,
+  weeklyCommissions: 20,
+  monthlyCommissions: 20,
   todaysSales: 10,
   todaysCommission: 30,
   events: [
@@ -730,10 +732,12 @@ export const mockResponseApi: StatsType = {
 };
 
 export const defaultStats: StatsType = {
-  treasury: 0,
+  // treasury: 0,
   commissionPercentage: 2,
   createdSince: new Date().toISOString(),
-  totalSales: 0,
+  // totalSales: 0,
+  monthlyCommissions: 0,
+  weeklyCommissions: 0,
   todaysSales: 0,
   todaysCommission: 0,
   events: [],

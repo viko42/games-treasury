@@ -106,14 +106,15 @@ export default function WildForest() {
       axios.get("https://api.lord-holders.xyz/public/ronin-games-commissions")
         .then((response) => {
           const monthlyWildForest = response.data.monthly.find((m: { game: string }) => m.game === "WildForest");
+          const weeklyWildForest = response.data.weekly.find((m: { game: string }) => m.game === "WildForest");
           setStats(prevStats => ({
             ...prevStats,
             commissionPercentage: 5,
             createdSince: new Date("08/25/2023").toISOString(),
             todaysCommission: Number(Number(response.data.daily.WildForest?.totalCommission * response.data.ronPrice || 0).toFixed(2)),
             todaysSales: Number(Number(response.data.daily.WildForest?.totalTxs || 0).toFixed(2)),
-            totalSales: Number(Number(monthlyWildForest?.txs || 0).toFixed(2)),
-            treasury: Number(Number(monthlyWildForest?.commission * response.data.ronPrice || 0).toFixed(2))
+            monthlyCommissions: Number(Number(monthlyWildForest?.commission * response.data.ronPrice || 0).toFixed(2)),
+            weeklyCommissions: Number(Number(weeklyWildForest?.commission * response.data.ronPrice || 0).toFixed(2)),
           }));
         })
         .catch(err => {
@@ -176,7 +177,7 @@ export default function WildForest() {
             <div className="w-full sm:flex-1">
               <BulletCard
                 title="Last 30d commission"
-                amount={stats.treasury}
+                amount={stats.monthlyCommissions}
                 icon={FaDollarSign}
                 iconColor="text-yellow-400"
                 percentageChange={5.2}
@@ -207,9 +208,9 @@ export default function WildForest() {
           <div className="w-full px-2 mb-4 flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
             <div className="w-full sm:flex-1">
               <BulletCard
-                title="Last 30d sales"
-                tooltip="Recording started on September 1st"
-                amount={stats.totalSales}
+                title="Last 7d commission"
+                // tooltip="Recording started on September 1st"
+                amount={stats.weeklyCommissions}
                 icon={FaShoppingCart}
                 iconColor="text-yellow-400"
               />
