@@ -175,7 +175,7 @@ export default function WildForest() {
           <div className="w-full px-2 mb-4 flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
             <div className="w-full sm:flex-1">
               <BulletCard
-                title="Monthly Commission"
+                title="Last 30d commission"
                 amount={stats.treasury}
                 icon={FaDollarSign}
                 iconColor="text-yellow-400"
@@ -207,7 +207,7 @@ export default function WildForest() {
           <div className="w-full px-2 mb-4 flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
             <div className="w-full sm:flex-1">
               <BulletCard
-                title="Monthly sales"
+                title="Last 30d sales"
                 tooltip="Recording started on September 1st"
                 amount={stats.totalSales}
                 icon={FaShoppingCart}
