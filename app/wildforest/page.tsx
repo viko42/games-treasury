@@ -105,14 +105,15 @@ export default function WildForest() {
     const fetchData = () => {
       axios.get("https://api.lord-holders.xyz/public/ronin-games-commissions")
         .then((response) => {
+          const monthlyWildForest = response.data.monthly.find((m: { game: string }) => m.game === "WildForest");
           setStats(prevStats => ({
             ...prevStats,
             commissionPercentage: 5,
             createdSince: new Date("08/25/2023").toISOString(),
-            todaysCommission: Number(Number(response.data.WildForest?.totalCommission * response.data.ronPrice || 0).toFixed(2)),
-            todaysSales: Number(Number(response.data.WildForest?.totalTxs || 0).toFixed(2)),
-            totalSales: Number(Number(response.data.globalCommission?.totalTxs || 0).toFixed(2)),
-            treasury: Number(Number(response.data.globalCommission?.totalCommission * response.data.ronPrice || 0).toFixed(2))
+            todaysCommission: Number(Number(response.data.daily.WildForest?.totalCommission * response.data.ronPrice || 0).toFixed(2)),
+            todaysSales: Number(Number(response.data.daily.WildForest?.totalTxs || 0).toFixed(2)),
+            totalSales: Number(Number(monthlyWildForest?.txs || 0).toFixed(2)),
+            treasury: Number(Number(monthlyWildForest?.commission * response.data.ronPrice || 0).toFixed(2))
           }));
         })
         .catch(err => {
